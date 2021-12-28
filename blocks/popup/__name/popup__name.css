@@ -5,6 +5,8 @@
   margin: 0;
   margin-bottom: 30px;
   border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  height: 40px;
 }
 
 .popup__name:last-of-type {

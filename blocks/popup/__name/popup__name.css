@@ -1,0 +1,12 @@
+.popup__name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  margin-bottom: 30px;
+  border: none;
+}
+
+.popup__name:last-of-type {
+  margin-bottom: 48px;
+}

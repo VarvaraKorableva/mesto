@@ -9,6 +9,7 @@
   padding-left: 200px;
   padding-right: 200px;
   color: #fff;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1060px) {
@@ -30,5 +31,11 @@
   .page {
     padding-left: 19px;
     padding-right: 19px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .page {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

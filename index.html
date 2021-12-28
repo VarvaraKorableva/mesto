@@ -16,83 +16,88 @@
       </header>
 
       <main>
+
         <section class="profile">
-
           <div class="profile__contaner">
-
             <img src="images/Kusto.jpg" class="profile__avatar">
-
-           <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <img src="images/Edit-Button.png" alt="Чекбокс" class="profile__edit-button">
-              <p class="profile__job">Исследователь океана</p>
+            <div class="profile__info">
+              <h1 class="profile__name" id="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"></button>
+              <p class="profile__job" id="profile__job">Исследователь океана</p>
+            </div>
           </div>
-
-          </div>
-          <div class="profile__add-button">
-            <img src="images/plus.svg" class="profile__inside-button">
-          </div>
-
-
-
+          <button class="profile__add-button"></button>
         </section>
 
         <section>
           <ul class="elements">
-
             <li class="elements__element">
               <img src="images/America.jpeg" alt="Дамба Гувера" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Дамба Гувера</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="images/Portural.jpeg" alt="Дворец в Браге" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Дворец в Браге</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="images/Spain.jpeg" alt="Дворец Гауди" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Дворец Гауди</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="images/Italy.jpeg" alt="Санта-Мария-Дель-Фьоре" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Санта-Мария-Дель-Фьоре</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="images/France.jpeg" alt="Руанский собор" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Руанский собор</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
 
             <li class="elements__element">
               <img src="images/Russia.jpeg" alt="Домбай" class="elements__image">
-              <div class="elements__contaner">
+              <div class="elements__container">
                 <p class="elements__text">Домбай</p>
-                <img src="images/heart.png" class="elements__button">
+                <button class="elements__like-button"></button>
               </div>
             </li>
           </ul>
         </section>
+
+        <section class="popup">
+           <div class="popup__container">
+          <button class="popup__close-button"></button>
+            <form class="popup__form">
+              <h3 class="popup__title">Редактировать профиль</h3>
+                <input id="name" type="text" class="popup__name">
+                <input id="job" type="text" class="popup__job">
+                <button type="submit" class="popup__button">Сохранить</button>
+            </form>
+           </div>
+        </section>
+
       </main>
-      <footer class="footer">
-        <p>&copy; 2020 Mesto Rassia</p>
+      <footer>
+        <p class="footer">&copy; 2020 Mesto Rassia</p>
       </footer>
     </div>
+    <script src="./index.js"></script>
 </body>
 </html>

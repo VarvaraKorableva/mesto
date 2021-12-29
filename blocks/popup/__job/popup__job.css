@@ -3,12 +3,9 @@
   font-size: 14px;
   line-height: 17px;
   margin: 0;
-  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   height: 40px;
+  padding: 0;
 }
 
-.popup__job:last-of-type {
-  margin-bottom: 48px;
-}

@@ -11,8 +11,9 @@
     <div class="page">
 
       <header class="header">
-        <img src="./images/Vector.png" class="header__logo" alt="Логотип">
-        <img src="images/Line.png" class="header__line" alt="Линия">
+        <a href="#">
+          <img src="images/LOGO.svg" alt="Логотип" class="header__logo">
+        </a>
       </header>
 
       <main>
@@ -22,7 +23,7 @@
             <img src="images/Kusto.jpg" class="profile__avatar" alt="фото">
             <div class="profile__info">
               <h1 class="profile__name" id="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button class="profile__edit-button" aria-label="Редактирование"></button>
               <p class="profile__job" id="profile__job">Исследователь океана</p>
             </div>
           </div>
@@ -30,74 +31,74 @@
         </section>
 
         <section>
-          <ul class="elements">
-            <li class="elements__element">
-              <img src="images/America.jpeg" alt="Дамба Гувера" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Дамба Гувера</h2>
-                <button class="elements__like-button"></button>
+          <ul class="cards">
+            <li class="card">
+              <img src="images/America.jpeg" alt="Дамба Гувера" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Дамба Гувера</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
 
-            <li class="elements__element">
-              <img src="images/Portural.jpeg" alt="Дворец в Браге" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Дворец в Браге</h2>
-                <button class="elements__like-button"></button>
+            <li class="card">
+              <img src="images/Portural.jpeg" alt="Дворец в Браге" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Дворец в Браге</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
 
-            <li class="elements__element">
-              <img src="images/Spain.jpeg" alt="Дворец Гауди" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Дворец Гауди</h2>
-                <button class="elements__like-button"></button>
+            <li class="card">
+              <img src="images/Spain.jpeg" alt="Дворец Гауди" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Дворец Гауди</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
 
-            <li class="elements__element">
-              <img src="images/Italy.jpeg" alt="Санта-Мария-Дель-Фьоре" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Санта-Мария-Дель-Фьоре</h2>
-                <button class="elements__like-button"></button>
+            <li class="card">
+              <img src="images/Italy.jpeg" alt="Санта-Мария-Дель-Фьоре" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Санта-Мария-Дель-Фьоре</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
 
-            <li class="elements__element">
-              <img src="images/France.jpeg" alt="Руанский собор" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Руанский собор</h2>
-                <button class="elements__like-button"></button>
+            <li class="card">
+              <img src="images/France.jpeg" alt="Руанский собор" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Руанский собор</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
 
-            <li class="elements__element">
-              <img src="images/Russia.jpeg" alt="Домбай" class="elements__image">
-              <div class="elements__container">
-                <h2 class="elements__text">Домбай</h2>
-                <button class="elements__like-button"></button>
+            <li class="card">
+              <img src="images/Russia.jpeg" alt="Домбай" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text">Домбай</h2>
+                <button class="card__like-button"></button>
               </div>
             </li>
           </ul>
         </section>
 
-        <section class="popup">
+        <article class="popup">
            <div class="popup__container">
           <button class="popup__close-button"></button>
             <form class="popup__form">
               <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="name" type="text" class="popup__name">
-                <input id="job" type="text" class="popup__job">
+                <input id="name" name="popup__name" type="text" class="popup__subtitle">
+                <input id="job" name="popup__job" type="text" class="popup__subtitle">
                 <button type="submit" class="popup__button">Сохранить</button>
             </form>
            </div>
-        </section>
+        </article>
 
       </main>
       <footer>
         <p class="footer">&copy; 2021 Mesto Russia</p>
       </footer>
     </div>
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -12,27 +12,23 @@ let jobInput = document.getElementById('job');
 
 
 function showPopup() {
-  popup.classList = 'popup_opened';
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  popup.classList.add('popup_opened');
 }
-profileEditButton.addEventListener('click', showPopup);
-
-
 function closePopup() {
-  popup.classList = 'popup';
+  popup.classList.remove('popup_opened');
 }
-popupCloseButton.addEventListener('click', closePopup);
-submitButton.addEventListener('click', closePopup);
-
-
 function formSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popup.classList.remove ('popup_opened');
+  closePopup();
 }
 
+
+profileEditButton.addEventListener('click', showPopup);
+popupCloseButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', formSubmitHandler);
 
 

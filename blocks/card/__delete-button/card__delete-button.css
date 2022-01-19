@@ -1,0 +1,4 @@
+.card__delete-button {
+  background-image: url(../../../images/Trash.svg);
+  background-position: right;
+}

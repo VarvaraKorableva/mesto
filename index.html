@@ -30,10 +30,24 @@
           <button class="profile__add-button" type="button"></button>
         </section>
 
-        <section>
+        <section class="cards">
+
+        </section>
+
+        <template id="cards-template">
+            <div class="card">
+                <img src="#" class="card__image">
+              <div class="card__container">
+                <h2 class="card__text"></h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </div>
+        </template>
+
+        <!--<section>
           <ul class="cards">
             <li class="card">
-              <img src="images/America.jpeg" alt="Дамба Гувера" class="card__image">
+                <img src="images/America.jpeg" alt="Дамба Гувера" class="card__image">
               <div class="card__container">
                 <h2 class="card__text">Дамба Гувера</h2>
                 <button class="card__like-button" type="button"></button>
@@ -80,9 +94,22 @@
               </div>
             </li>
           </ul>
-        </section>
+        </section>-->
 
-        <article class="popup">
+        <aside id="popupTemplate" class="popup">
+           <div class="popup__container">
+          <button class="popup__close-button" type="button"></button>
+            <form class="popup__form" name="popup__form">
+              <h3 class="popup__title">Редактировать профиль</h3>
+                <input id="name" name="popup__input" type="text" class="popup__subtitle">
+                <input id="job" name="popup__input" type="text" class="popup__subtitle">
+                <button id="button-submit" type="submit" class="popup__button">Сохранить</button>
+            </form>
+           </div>
+        </aside>
+
+
+       <!-- <aside id="popup-name" class="popup">
            <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
             <form class="popup__form" name="popup__form">
@@ -92,7 +119,19 @@
                 <button type="submit" class="popup__button">Сохранить</button>
             </form>
            </div>
-        </article>
+        </aside>-->
+
+        <aside id="popup-picture" class="popup">
+          <div class="popup__container">
+         <button id="picturePopapCloseButton" class="popup__close-button" type="button"></button>
+           <form class="popup__form" name="popup__form">
+             <h3 class="popup__title">Новое место</h3>
+               <input id="nameOfPicture" name="popup__input" type="text" value="Название" class="popup__subtitle">
+               <input id="linkForPicture" name="popup__input" type="url" value="Ссылка на картинку" class="popup__subtitle">
+               <button id="makeButton" type="submit" class="popup__button">Создать</button>
+           </form>
+          </div>
+       </aside>
 
       </main>
       <footer>
@@ -102,3 +141,4 @@
     <script src="./scripts/index.js"></script>
 </body>
 </html>
+

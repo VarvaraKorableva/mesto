@@ -31,72 +31,22 @@
         </section>
 
         <section class="cards">
-
         </section>
 
         <template id="cards-template">
-            <div class="card">
-                <img src="#" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text"></h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
+          <div class="card">
+            <div>
+              <img class="card__image">
+              <button class="card__delete-button" type="button"></button>
             </div>
+            <div class="card__container">
+              <h2 class="card__text"></h2>
+              <button class="card__like-button" type="button"></button>
+            </div>
+          </div>
         </template>
 
-        <!--<section>
-          <ul class="cards">
-            <li class="card">
-                <img src="images/America.jpeg" alt="Дамба Гувера" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Дамба Гувера</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img src="images/Portural.jpeg" alt="Дворец в Браге" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Дворец в Браге</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img src="images/Spain.jpeg" alt="Дворец Гауди" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Дворец Гауди</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img src="images/Italy.jpeg" alt="Санта-Мария-Дель-Фьоре" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Санта-Мария-Дель-Фьоре</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img src="images/France.jpeg" alt="Руанский собор" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Руанский собор</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img src="images/Russia.jpeg" alt="Домбай" class="card__image">
-              <div class="card__container">
-                <h2 class="card__text">Домбай</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-          </ul>
-        </section>-->
-
-        <aside id="popupTemplate" class="popup">
+        <aside id="popup-profile" class="popup">
            <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
             <form class="popup__form" name="popup__form">
@@ -107,32 +57,26 @@
             </form>
            </div>
         </aside>
-
-
-       <!-- <aside id="popup-name" class="popup">
-           <div class="popup__container">
-          <button class="popup__close-button" type="button"></button>
-            <form class="popup__form" name="popup__form">
-              <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="name" name="popup__input" type="text" class="popup__subtitle">
-                <input id="job" name="popup__input" type="text" class="popup__subtitle">
-                <button type="submit" class="popup__button">Сохранить</button>
-            </form>
-           </div>
-        </aside>-->
-
-        <aside id="popup-picture" class="popup">
+        <aside id="popup-AddPicture" class="popup">
           <div class="popup__container">
-         <button id="picturePopapCloseButton" class="popup__close-button" type="button"></button>
+         <button id="addPicturePopapCloseButton" class="popup__close-button" type="button"></button>
            <form class="popup__form" name="popup__form">
              <h3 class="popup__title">Новое место</h3>
                <input id="nameOfPicture" name="popup__input" type="text" value="Название" class="popup__subtitle">
-               <input id="linkForPicture" name="popup__input" type="url" value="Ссылка на картинку" class="popup__subtitle">
+               <input id="linkOfPicture" name="popup__input" type="url" value="Ссылка на картинку" class="popup__subtitle">
                <button id="makeButton" type="submit" class="popup__button">Создать</button>
            </form>
           </div>
        </aside>
-
+       <aside id="popup-fullSizePicture" class="popup">
+         <div class="popup__picture-container">
+          <button id="fullSizePicturePopapCloseButton" class="popup__close-button" type="button"></button>
+        <div>
+          <img src="images/Portural.jpeg" class="popup__picture">
+          <p class="popup__picture-name">Portugal</p>
+        </div>
+         </div>
+       </aside>
       </main>
       <footer>
         <p class="footer">&copy; 2021 Mesto Russia</p>

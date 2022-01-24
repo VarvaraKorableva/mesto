@@ -63,21 +63,17 @@ initialCards.forEach(function(item){
 
   cardContainer.append(cardElement);
 
-  cardElement.querySelector('.card__image').addEventListener ('click', function (evt) {
-    evt.target.popupFullSizePicture.classList.add('popup_opened');
+  cardElement.querySelector('.card__image').addEventListener ('click', function (openFullPicture) {
+    /*evt.target.popupFullSizePicture.classList.add('popup_opened')*/
+    console.log('click');
+    let picture = document.querySelector('.popup__picture');
+    let name = document.querySelector('.popup__picture-name');
+    name.textContent = item.name;
+    picture.src = item.link;
+
+    popupFullSizePicture.classList.add('popup_opened');
   });
-
 });
-/*
-function openFullPicture () {
-
-  let picture = document.querySelector('.popup__picture').src;
-  let name = document.querySelector('.popup__picture-name').textContent;
-  name = item.name;
-  picture = item.link;
-
-  popupFullSizePicture.classList.add('.popup_opened');
-}*/
 
 
 function addCardSubmitHandler (evt) {
@@ -96,15 +92,27 @@ function addCardSubmitHandler (evt) {
     evt.target.classList.toggle('card__like-button_active');
   });
 
-  cardElement.querySelector('.card__delete-button').addEventListener('click', function () {
-    cardElement.remove();
+  cardElement.querySelector('.card__delete-button').addEventListener('click', function (evt) {
+    evt.target.closest('.card').remove();
    });
 
   cardContainer.prepend(cardElement);
 
   inputLink.value = "Ссылка на картинку";
   inputName.value = "Название";
+
+
+  cardElement.querySelector('.card__image').addEventListener ('click', function () {
+
+    let picture = document.querySelector('.popup__picture');
+    let name = document.querySelector('.popup__picture-name');
+    name.textContent = inputName.value;
+    picture.src = inputLink.value;
+
+    popupFullSizePicture.classList.add('popup_opened');
+  });
 }
+
 
 function showPopup() {
   nameInput.value = profileName.textContent;
@@ -131,10 +139,10 @@ function closePopupAddPicture() {
   popupAddPicture.classList.remove('popup_opened');
 }
 
+fullSizePicturePopapCloseButton.addEventListener('click', function() {
+  popupFullSizePicture.classList.remove('popup_opened');
+});
 
-
-/*
-fullSizePicturePopapCloseButton.addEventListener('click', closePopupFullSizePicture);*/
 makeButton.addEventListener('click', addCardSubmitHandler);
 profileEditButton.addEventListener('click', showPopup);
 popupCloseButton.addEventListener('click', closePopup);

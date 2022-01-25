@@ -22,6 +22,7 @@ const cardElementImage = document.querySelector('.card__image');
 const inputName = document.getElementById('nameOfPicture');
 const inputLink = document.getElementById('linkOfPicture');
 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -76,7 +77,8 @@ function addCard(name, link) {
       popupFullSizePicture.classList.add('popup_opened-dark');
   });
 
-  return cardElement;
+    return cardElement;
+
   };
 
 //Передача данных массива в функцию доб карточек с ее вызовом

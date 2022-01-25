@@ -1,8 +1,8 @@
 .popup__picture {
-  max-width: 75vw;
-  max-height: 75vh;
+  max-width: calc(75vw - 32px);
+  max-height: calc(75vh - 32px);
   margin-top: 8px;
-  margin-right: 8px;
+  margin-right: 50px;
 }
 
 @media screen and (max-width: 600px) {

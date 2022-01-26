@@ -89,19 +89,7 @@ initialCards.forEach (function(item) {
   cardContainer.append(cardElement);
   });
 
-//Создание пользователем новой карточки, с помощью вызова функции addCard
-/*Как выглядела ранее
-  addCardButton.addEventListener('click', function () {
-
-  addCard(inputName.value, inputLink.value);
-
-  const cardElement = addCard(inputName.value, inputLink.value);
-
-  cardContainer.prepend(cardElement);
-  closePopup(popupAddPicture);
-  popupForm.reset();
-});*/
-
+//Функция создание пользователем новой карточки, с помощью вызова функции addCard и обработчика событий сабмит
 function newCard() {
   addCard(inputName.value, inputLink.value);
   const cardElement = addCard(inputName.value, inputLink.value);
@@ -109,21 +97,20 @@ function newCard() {
   closePopup(popupAddPicture);
   popupForm.reset();
 };
-//Создание пользователем новой карточки, с помощью вызова функции addCard
+
 function addCardSubmitHandler (evt) {
-  newCard();
   evt.preventDefault();
   const cardElement = addCard(inputName.value, inputLink.value);
   closePopup(popupAddPicture);
   popupForm.reset();
-}
+};
 
 function handleSubmitUserForm (evt) {
   evt.preventDefault();
   closePopup(popupProfile);
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-}
+};
 
 function showPopup(popupName) {
   popupName === popupFullSizePicture ? popupName.classList.add('popup_opened-dark') : popupName.classList.add('popup_opened');
@@ -143,5 +130,7 @@ popupCloseButton.addEventListener('click',() => {closePopup(popupProfile)});
 addButton.addEventListener('click',() => {showPopup(popupAddPicture)});
 picturePopapCloseButton.addEventListener('click',() => {closePopup(popupAddPicture)});
 formElement.addEventListener('submit', handleSubmitUserForm);
-popupForm.addEventListener('submit', addCardSubmitHandler);
+popupForm.addEventListener('submit',(evt) => {evt.preventDefault(); newCard()});
+
+
 

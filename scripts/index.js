@@ -90,52 +90,58 @@ initialCards.forEach (function(item) {
   });
 
 //Создание пользователем новой карточки, с помощью вызова функции addCard
-addCardButton.addEventListener('click', function () {
+/*Как выглядела ранее
+  addCardButton.addEventListener('click', function () {
+
+  addCard(inputName.value, inputLink.value);
+
+  const cardElement = addCard(inputName.value, inputLink.value);
+
+  cardContainer.prepend(cardElement);
+  closePopup(popupAddPicture);
+  popupForm.reset();
+});*/
+
+function newCard() {
   addCard(inputName.value, inputLink.value);
   const cardElement = addCard(inputName.value, inputLink.value);
   cardContainer.prepend(cardElement);
-
-  inputName.value = '';
-  inputLink.value = '';
-
   closePopup(popupAddPicture);
-});
-
+  popupForm.reset();
+};
+//Создание пользователем новой карточки, с помощью вызова функции addCard
 function addCardSubmitHandler (evt) {
+  newCard();
   evt.preventDefault();
   const cardElement = addCard(inputName.value, inputLink.value);
-
-  inputLink.value = '';
-  inputName.value = '';
-
   closePopup(popupAddPicture);
+  popupForm.reset();
 }
 
 function handleSubmitUserForm (evt) {
   evt.preventDefault();
+  closePopup(popupProfile);
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup(popupProfile);
 }
 
 function showPopup(popupName) {
   popupName === popupFullSizePicture ? popupName.classList.add('popup_opened-dark') : popupName.classList.add('popup_opened');
-
- /* nameInput.value = profileName.textContent;
+  if (popupName === popupProfile) {
+  nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  popup.classList.add('popup_opened');*/
+  }
 };
-
 
 function closePopup(popupName) {
   popupName === popupFullSizePicture ? popupName.classList.remove('popup_opened-dark') : popupName.classList.remove('popup_opened');
 };
 
-
-fullSizePicturePopapCloseButton.addEventListener('click', closePopup(popupFullSizePicture));
-profileEditButton.addEventListener('click', showPopup(popupProfile));
-popupCloseButton.addEventListener('click', closePopup(popupProfile));
-addButton.addEventListener('click', showPopup(popupAddPicture));
-picturePopapCloseButton.addEventListener('click', closePopup(popupAddPicture));
+fullSizePicturePopapCloseButton.addEventListener('click', () => {closePopup(popupFullSizePicture)});
+profileEditButton.addEventListener('click',() => {showPopup(popupProfile)});
+popupCloseButton.addEventListener('click',() => {closePopup(popupProfile)});
+addButton.addEventListener('click',() => {showPopup(popupAddPicture)});
+picturePopapCloseButton.addEventListener('click',() => {closePopup(popupAddPicture)});
 formElement.addEventListener('submit', handleSubmitUserForm);
 popupForm.addEventListener('submit', addCardSubmitHandler);
+

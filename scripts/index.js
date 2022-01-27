@@ -1,11 +1,9 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupCloseButton = document.querySelector('.popup__close-button');
-const popup = document.querySelector('.popup');
+const addButton = document.querySelector('.profile__add-button');
 const openPopup = document.querySelector('.popup_opened');
 const popupForm = document.getElementById('popupForm');
 const formElement = document.querySelector('.popup__form');
-const submitButton = document.querySelector('.popup__button');
-const addButton = document.querySelector('.profile__add-button');
 const profileName = document.getElementById('profile__name');
 const profileJob = document.getElementById('profile__job');
 const nameInput = document.getElementById('name');
@@ -13,12 +11,8 @@ const jobInput = document.getElementById('job');
 const popupAddPicture = document.getElementById('popup-AddPicture');
 const picturePopapCloseButton = document.getElementById('addPicturePopapCloseButton');
 const cardContainer = document.querySelector('.cards');
-const addCardButton = document.getElementById('makeButton');
-const popupPictureCloseButton = document.getElementById('picturePopapCloseButton');
 const fullSizePicturePopapCloseButton = document.getElementById('fullSizePicturePopapCloseButton');
 const popupFullSizePicture = document.getElementById('popup-fullSizePicture');
-const cardElementText = document.querySelector('.card__text');
-const cardElementImage = document.querySelector('.card__image');
 const inputName = document.getElementById('nameOfPicture');
 const inputLink = document.getElementById('linkOfPicture');
 const picture = document.querySelector('.popup__picture');
@@ -57,9 +51,9 @@ const initialCards = [
 function addCard(name, link) {
   const cardTemplate = document.querySelector('#cards-template').content;
   cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-
+  const cardImage = cardElement.querySelector('.card__image');
   cardElement.querySelector('.card__text').textContent = name;
-  let cardImage = cardElement.querySelector('.card__image').src = link;
+  cardImage.src = link;
   cardImage.alt = name;
 
     cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
@@ -90,17 +84,9 @@ initialCards.forEach (function(item) {
   });
 
 //Функция создание пользователем новой карточки, с помощью вызова функции addCard и обработчика событий сабмит
-function newCard() {
-  addCard(inputName.value, inputLink.value);
+function initialNewCardFromUser() {
   const cardElement = addCard(inputName.value, inputLink.value);
   cardContainer.prepend(cardElement);
-  closePopup(popupAddPicture);
-  popupForm.reset();
-};
-
-function addCardSubmitHandler (evt) {
-  evt.preventDefault();
-  const cardElement = addCard(inputName.value, inputLink.value);
   closePopup(popupAddPicture);
   popupForm.reset();
 };
@@ -113,24 +99,19 @@ function handleSubmitUserForm (evt) {
 };
 
 function showPopup(popupName) {
-  popupName === popupFullSizePicture ? popupName.classList.add('popup_opened-dark') : popupName.classList.add('popup_opened');
-  if (popupName === popupProfile) {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  }
+  popupName.classList.add('popup_opened');
 };
 
 function closePopup(popupName) {
-  popupName === popupFullSizePicture ? popupName.classList.remove('popup_opened-dark') : popupName.classList.remove('popup_opened');
+  popupName.classList.remove('popup_opened');
 };
 
 fullSizePicturePopapCloseButton.addEventListener('click', () => {closePopup(popupFullSizePicture)});
-profileEditButton.addEventListener('click',() => {showPopup(popupProfile)});
 popupCloseButton.addEventListener('click',() => {closePopup(popupProfile)});
 addButton.addEventListener('click',() => {showPopup(popupAddPicture)});
 picturePopapCloseButton.addEventListener('click',() => {closePopup(popupAddPicture)});
 formElement.addEventListener('submit', handleSubmitUserForm);
-popupForm.addEventListener('submit',(evt) => {evt.preventDefault(); newCard()});
-
+popupForm.addEventListener('submit',(evt) => {evt.preventDefault(); initialNewCardFromUser()});
+profileEditButton.addEventListener('click',() => {nameInput.value = profileName.textContent; jobInput.value = profileJob.textContent; showPopup(popupProfile);});
 
 

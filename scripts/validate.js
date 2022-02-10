@@ -18,6 +18,22 @@ const enableValidation = (objOfSelectors) => {
   });
 };
 
+const isValid = (formElement, inputElement, config) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage, config);
+
+  } else {
+    hideInputError(formElement, inputElement, config);
+  }
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+};
+
+
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -35,22 +51,6 @@ const hideInputError = (formElement, inputElement, config) => {
   errorElement.textContent = '';
 };
 
-const isValid = (formElement, inputElement, config) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, config);
-
-  } else {
-    hideInputError(formElement, inputElement, config);
-  }
-};
-
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
-};
-
-
 //функция блокировки кнопки добавления изменений
 function blockButton(buttonElement, config) {
   buttonElement.classList.add(config.inactiveButtonClass);
@@ -63,8 +63,10 @@ function unBlockButton(buttonElement, config) {
 const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     blockButton(buttonElement, config);
+    buttonElement.setAttribute('disabled', true);
   } else {
     unBlockButton(buttonElement, config);
+    buttonElement.removeAttribute('disabled');
   }
 };
 

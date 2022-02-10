@@ -35,7 +35,7 @@
 
         <template id="cards-template">
           <div class="card">
-            <div>
+            <div class="card__img-container">
               <img class="card__image">
               <button class="card__delete-button" type="button"></button>
             </div>
@@ -50,7 +50,7 @@
            <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
 
-            <form id="popupProfileForm" class="popup__form" name="popupProfileForm" novalidate>
+            <form id="popupProfileForm" class="popup__form popup__form_profile-disabled" name="popupProfileForm" novalidate>
               <h3 class="popup__title">Редактировать профиль</h3>
 
                 <input

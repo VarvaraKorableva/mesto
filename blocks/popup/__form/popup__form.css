@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: calc(430px - (36px*2));
-  height: calc(330px - (34px + 37px));
+  min-height: calc(330px - (34px + 37px));
   background-color: #fff;
   color: black;
   border-radius: 10px;
@@ -16,7 +16,7 @@
 @media screen and (max-width: 600px) {
   .popup__form {
     width: calc(282px - (22px*2));
-    height: calc(322px - (25px*2));
+    min-height: calc(322px - (25px*2));
     padding-left: 22px;
     padding-right: 22px;
     padding-bottom: 25px;

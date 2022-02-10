@@ -49,22 +49,71 @@
         <aside id="popup-profile" class="popup">
            <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
-            <form class="popup__form" name="popup__form">
+
+            <form id="popupProfileForm" class="popup__form" name="popupProfileForm" novalidate>
               <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="name" name="popup__input" type="text" class="popup__subtitle">
-                <input id="job" name="popup__input" type="text" class="popup__subtitle">
-                <button id="button-submit" type="submit" class="popup__button">Сохранить</button>
+
+                <input
+                  required
+                  id="name"
+                  name="popup__input"
+                  type="text"
+                  minlength="2"
+                  maxlength="40"
+                  class="popup__input"
+                />
+                <span class="popup__error_visible name-error"></span>
+
+                <input
+                  required
+                  id="job"
+                  name="popup__input"
+                  type="text"
+                  minlength="2"
+                  maxlength="200"
+                  class="popup__input">
+
+                <span class="popup__error_visible job-error"></span>
+
+                <button
+                  id="button-submit"
+                  type="submit"
+                  class="popup__button">Сохранить</button>
             </form>
            </div>
         </aside>
+
         <aside id="popup-AddPicture" class="popup">
           <div class="popup__container">
          <button id="addPicturePopapCloseButton" class="popup__close-button" type="button"></button>
-           <form  id="popupForm" class="popup__form" name="popup__form">
+
+           <form id="popupForm" class="popup__form" name="popupAddPictureForm" novalidate>
              <h3 class="popup__title">Новое место</h3>
-               <input id="nameOfPicture" name="popup__input" type="text" placeholder="Название" class="popup__subtitle" required>
-               <input id="linkOfPicture" name="popup__input" type="url" placeholder="Ссылка на картинку" class="popup__subtitle" required>
-               <button id="makeButton" type="submit" class="popup__button">Создать</button>
+
+              <input
+                id="nameOfPicture"
+                name="popup__input"
+                type="text"
+                minlength="2"
+                maxlength="30"
+                placeholder="Название"
+                class="popup__input"
+                required>
+              <span class="popup__error_visible nameOfPicture-error"></span>
+
+              <input
+                id="linkOfPicture"
+                name="popupUrlInput"
+                type="url"
+                placeholder="Ссылка на картинку"
+                class="popup__input"
+                required>
+              <span id="spanOfPicture" class="popup__error_visible-error linkOfPicture-error"></span>
+
+              <button
+                id="makeButton"
+                type="submit"
+                class="popup__button popup__button_block">Создать</button>
            </form>
           </div>
        </aside>
@@ -83,6 +132,8 @@
       </footer>
     </div>
     <script src="./scripts/index.js"></script>
+
+    <script src="scripts/validate.js"></script>
 </body>
 </html>
 

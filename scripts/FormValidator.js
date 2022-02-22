@@ -1,14 +1,3 @@
-export {meanForValidationConfig};
-import {popupProfileForm, popupAddPictureForm} from './index.js';
-
-const meanForValidationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
 
 export default class FormValidator {
   constructor(config, formElement) {
@@ -22,7 +11,6 @@ export default class FormValidator {
 
     this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    /*this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);*/
   }
 
   _isValid (inputElement) {
@@ -42,7 +30,6 @@ export default class FormValidator {
 
   _showInputError (inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
@@ -50,7 +37,6 @@ export default class FormValidator {
 
   _hideInputError (inputElement) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
@@ -77,25 +63,14 @@ export default class FormValidator {
   };
 
   resetValidation() {
-    this._blockButton(pictureFormSubmitButton);
-
     this._toggleButtonState();
-
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement)
+      this._hideInputError(inputElement);
     });
-
   }
 
-
   _setEventListeners () {
-/*
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });*/
-
     this._toggleButtonState();
-
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
@@ -107,8 +82,6 @@ export default class FormValidator {
   enableValidation () {
     this._setEventListeners()
   };
-
-
 }
 
 

@@ -1,8 +1,41 @@
 import Card from './Card.js';
-import {initialCards} from './Card.js';
-import {meanForValidationConfig} from './FormValidator.js';
 import FormValidator from './FormValidator.js';
-export {popupProfileForm, popupAddPictureForm};
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+const meanForValidationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupCloseButton = document.querySelector('.popup__close-button');
@@ -20,7 +53,7 @@ const fullSizePicturePopapCloseButton = document.querySelector('#fullSizePicture
 const popupFullSizePicture = document.querySelector('#popup-fullSizePicture');
 const inputName = document.querySelector('#nameOfPicture');
 const inputLink = document.querySelector('#linkOfPicture');
-const popupPicture = document.querySelector('.popup__picture');
+/*const popupPicture = document.querySelector('.popup__picture');*/
 const pictureName = document.querySelector('.popup__picture-name');
 const popupProfile = document.querySelector('#popup-profile');
 const pictureFormSubmitButton = document.querySelector('#makeButton');
@@ -67,11 +100,7 @@ function handleNewCardFormSubmit() {
 
   addCardToStartOfCardContainer(inputsValues);
   closePopup(popupAddPicture);
-  /*blockPictureFormSubmitButton();
 
-  pictureFormSubmitButton.classList.add('popup__button_disabled');
-  pictureFormSubmitButton.setAttribute('disabled', true);
-resetValidation();*/
   popupAddPictureForm.reset();
 };
 
@@ -81,11 +110,6 @@ function handleSubmitUserForm (evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 };
-/*
-function blockPictureFormSubmitButton() {
-  pictureFormSubmitButton.classList.add('popup__button_disabled');
-  pictureFormSubmitButton.setAttribute('disabled', true);
-}*/
 
 function showPopup(popupName) {
   popupName.classList.add('popup_opened');
@@ -104,7 +128,6 @@ function closePopup(popupName) {
 //фун-ции закрытия попапов через overlay
 function clickOverlayToClose(evt) {
   if (evt.target.classList.contains('popup')) {
-  /*  const overlay = document.querySelector('.popup_opened');*/
     closePopup(evt.target);
   };
 }
@@ -120,9 +143,6 @@ popupProfileFormValid.enableValidation(meanForValidationConfig);
 
 popupAddPictureFormValid.enableValidation(meanForValidationConfig);
 
-popupPicture.addEventListener('click', () => {
-  closePopup(popupFullSizePicture);
-});
 
 fullSizePicturePopapCloseButton.addEventListener('click', () => {
   closePopup(popupFullSizePicture);
@@ -134,6 +154,7 @@ popupCloseButton.addEventListener('click',() => {
 
 addButton.addEventListener('click',() => {
   showPopup(popupAddPicture);
+  popupAddPictureFormValid.resetValidation();
 });
 
 picturePopapCloseButton.addEventListener('click',() => {
@@ -151,7 +172,6 @@ profileEditButton.addEventListener('click',() => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   popupProfileFormValid.resetValidation();
-  popupAddPictureFormValid.resetValidation();
 
   showPopup(popupProfile);
 });

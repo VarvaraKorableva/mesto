@@ -27,54 +27,39 @@ const initialCards = [
   }
 ];
 
-const popupElement = document.querySelector('#popup-fullSizePicture');
-const popupImage = document.querySelector('.popup__picture');
-const popupCloseButton = document.querySelector('.popup__picture-close-button');
-/*const cardImage = document.querySelector('.card__image');
-const likeButton = document.querySelector('.card__like-button');
-const trushButton = document.querySelector('.card__delete-button');*/
-const pictureName = document.querySelector('.popup__picture-name');
-
 export default class Card {
-  constructor (data, cardSelector) {
+  constructor (data, cardSelector, handleCardClick) {
       this._name = data.name;
       this._link = data.link;
       this._cardSelector = cardSelector;
+      this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.card__image').addEventListener('click', () => {
-      this._handleOpenPopup();
-    });
 
-    popupCloseButton.addEventListener('click', () => {
-      this._handleClosePopup();
-    });
+    this._deleteButton = this._element.querySelector('.card__delete-button');
+    this._cardImage = this._element.querySelector('.card__image');
+    this._likeButton = this._element.querySelector('.card__like-button');
+    this._cardText = this._element.querySelector('.card__text');
 
-    this._element.querySelector('.card__like-button').addEventListener('click', () => {
+    this._likeButton.addEventListener('click', () => {
       this._handleLikeClick();
     });
 
-    this._element.querySelector('.card__delete-button').addEventListener('click', () => {
+    this._deleteButton.addEventListener('click', () => {
       this._handleTrashClick();
+    });
+
+    this._cardImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
     });
   }
 
-  _handleOpenPopup(){
-    popupImage.src = this._link;
-    pictureName.textContent = this._name;
-    popupImage.alt = this._name;
-    popupElement.classList.add('popup_opened');
-  }
-  _handleClosePopup(){
-    popupImage.src = "";
-    popupElement.classList.remove('popup_opened');
-  }
   _handleLikeClick() {
-   this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
+    this._likeButton.classList.toggle('card__like-button_active');
   }
   _handleTrashClick() {
-   this._element.querySelector('.card__delete-button').closest('.card').remove();
+    this._deleteButton.closest('.card').remove();
   }
 
   /*метод _getTemplate, найдёт: template-элемент с классом cards-template,
@@ -93,8 +78,8 @@ const cardElement = document
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.card__text').textContent = this._name;
-    const cardImage = this._element.querySelector('.card__image');
+    this._cardText.textContent = this._name;
+    const cardImage = this._cardImage;
     cardImage.src = this._link;
     cardImage.alt = this._name;
 

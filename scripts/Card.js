@@ -37,12 +37,12 @@ export default class Card {
   /*метод _getTemplate, найдёт: template-элемент с классом cards-template,
 извлечёт его содержимое, в содержимом найдёт элемент с классом card,
 клонирует его, вернёт клонированный элемент.*/
-    _getTemplate() {
-const cardElement = document
-  .querySelector(this._cardSelector)
-  .content
-  .querySelector('.card')
-  .cloneNode(true);
+  _getTemplate() {
+    const cardElement = document
+    .querySelector(this._cardSelector)
+    .content
+    .querySelector('.card')
+    .cloneNode(true);
       return cardElement;
   }
 

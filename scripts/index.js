@@ -37,8 +37,8 @@ const meanForValidationConfig = {
   errorClass: 'popup__error_visible',
 };
 
+const popups = document.querySelectorAll('.popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
-const popupCloseButton = document.querySelector('.popup__close-button');
 const addButton = document.querySelector('.profile__add-button');
 const popupAddPictureForm = document.querySelector('#popupForm');
 const popupProfileForm = document.querySelector('.popup__form_profile-disabled');
@@ -47,16 +47,12 @@ const profileJob = document.querySelector('#profile__job');
 const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#job');
 const popupAddPicture = document.querySelector('#popup-AddPicture');
-const picturePopapCloseButton = document.querySelector('#addPicturePopapCloseButton');
 const cardContainer = document.querySelector('.cards');
-const fullSizePicturePopapCloseButton = document.querySelector('#fullSizePicturePopapCloseButton');
 const popupFullSizePicture = document.querySelector('#popup-fullSizePicture');
 const inputName = document.querySelector('#nameOfPicture');
 const inputLink = document.querySelector('#linkOfPicture');
-/*const popupPicture = document.querySelector('.popup__picture');*/
 const pictureName = document.querySelector('.popup__picture-name');
 const popupProfile = document.querySelector('#popup-profile');
-const pictureFormSubmitButton = document.querySelector('#makeButton');
 const popupImage = document.querySelector('.popup__picture');
 
 const popupProfileFormValid = new FormValidator(meanForValidationConfig, popupProfileForm);
@@ -104,6 +100,18 @@ function handleNewCardFormSubmit() {
   popupAddPictureForm.reset();
 };
 
+//Закрытие всех попапов крестиком и оверлеем и esc
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__close-button')) {
+        closePopup(popup)
+      }
+  })
+})
+
 function handleSubmitUserForm (evt) {
   evt.preventDefault();
   closePopup(popupProfile);
@@ -144,21 +152,9 @@ popupProfileFormValid.enableValidation(meanForValidationConfig);
 popupAddPictureFormValid.enableValidation(meanForValidationConfig);
 
 
-fullSizePicturePopapCloseButton.addEventListener('click', () => {
-  closePopup(popupFullSizePicture);
-});
-
-popupCloseButton.addEventListener('click',() => {
-  closePopup(popupProfile);
-});
-
 addButton.addEventListener('click',() => {
   showPopup(popupAddPicture);
   popupAddPictureFormValid.resetValidation();
-});
-
-picturePopapCloseButton.addEventListener('click',() => {
-  closePopup(popupAddPicture);
 });
 
 popupProfileForm.addEventListener('submit', handleSubmitUserForm);
@@ -171,7 +167,6 @@ popupAddPictureForm.addEventListener('submit',(evt) => {
 profileEditButton.addEventListener('click',() => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  popupProfileFormValid.resetValidation();
-
   showPopup(popupProfile);
 });
+

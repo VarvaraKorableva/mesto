@@ -43,18 +43,18 @@ export default class FormValidator {
   };
 
   //функция блокировки кнопки добавления изменений
-  _blockButton(_submitButton) {
+  _blockButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.setAttribute('disabled', true);
   }
 
   //функция разблокировки кнопки добавления изменений
-  _unBlockButton(_submitButton) {
+  _unBlockButton() {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.removeAttribute('disabled');
   }
   //Выбор действия по регулировке кнопки (блок или разблокирововать)
-  _toggleButtonState(_submitButton) {
+  _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
       this._blockButton();
     } else {

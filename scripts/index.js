@@ -121,16 +121,12 @@ function handleSubmitUserForm (evt) {
 
 function showPopup(popupName) {
   popupName.classList.add('popup_opened');
-
   document.addEventListener('keydown', handleEscKey);
-  document.addEventListener('click', clickOverlayToClose);
 };
 
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
-
   document.removeEventListener('keydown', handleEscKey);
-  document.removeEventListener('click', clickOverlayToClose);
 };
 
 //фун-ции закрытия попапов через overlay
@@ -147,9 +143,9 @@ function handleEscKey(evt) {
 };
 }
 
-popupProfileFormValid.enableValidation(meanForValidationConfig);
+popupProfileFormValid.enableValidation();
 
-popupAddPictureFormValid.enableValidation(meanForValidationConfig);
+popupAddPictureFormValid.enableValidation();
 
 
 addButton.addEventListener('click',() => {
@@ -167,6 +163,7 @@ popupAddPictureForm.addEventListener('submit',(evt) => {
 profileEditButton.addEventListener('click',() => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  popupProfileFormValid.resetValidation();
   showPopup(popupProfile);
 });
 

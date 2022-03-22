@@ -5,7 +5,9 @@
 * FlexBox
 * Grid
 * DOM
-* JavaScript
+* JavaScript(ООП)
+* Webpack
+* Babel
 
-* [Ссылка на проект](https://varvara-from-moscow.github.io/mesto/)
+
 

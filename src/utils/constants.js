@@ -1,13 +1,12 @@
 export {
-  initialCards,
   meanForValidationConfig,
   popup,
   profileEditButton,
   addButton,
   popupAddPictureForm,
   popupProfileForm,
-  profileName,
-  profileJob,
+  profileNameSelector,
+  profileJobSelector,
   nameInput,
   jobInput,
   popupAddPicture,
@@ -17,35 +16,12 @@ export {
   inputLink,
   pictureName,
   popupProfile,
-  popupImage
+  popupImage,
+  profileAvatarSelector,
+  updateAvatarButton,
+  popapAreYouSureToDelete,
+  popupUpdateAvatar,
 };
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const meanForValidationConfig = {
   formSelector: '.popup__form',
@@ -57,7 +33,7 @@ const meanForValidationConfig = {
 };
 
 const profileEditButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+const addButton = document.querySelector('#profile__add-button');
 const popupAddPictureForm = document.querySelector('#popupForm');
 const popupProfileForm = document.querySelector('.popup__form_profile-disabled');
 const nameInput = document.querySelector('#name');
@@ -66,11 +42,19 @@ const inputName = document.querySelector('#nameOfPicture');
 const inputLink = document.querySelector('#linkOfPicture');
 const pictureName = document.querySelector('.popup__picture-name');
 const popupImage = document.querySelector('.popup__picture');
+const updateAvatarButton = document.querySelector('.profile__avatar-button');
+//const profileAvatar = document.querySelector('.profile__avatar');
+//const popupUpdateAvatar = document.querySelector('#update_avatar');
 
 const cardContainer = ('.cards');
 const popup = ('.popup');
 const popupAddPicture = ('#popup-AddPicture');
 const popupFullSizePicture = ('#popup-fullSizePicture');
-const profileName = ('#profile__name');
-const profileJob = ('#profile__job');
+const popapAreYouSureToDelete =('#areYouSureToDelete');
+const popupUpdateAvatar = ('#update_avatar');
+const profileNameSelector = ('#profile__name');
+const profileJobSelector = ('#profile__job');
 const popupProfile = ('#popup-profile');
+const profileAvatarSelector = ('.profile__avatar');
+
+

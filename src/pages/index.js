@@ -43,7 +43,7 @@ const popupAvatarValid = new FormValidator(meanForValidationConfig, popupUpdateA
 // Слушатель на кнопку открытия popup редактирования аватара
 updateAvatarButton.addEventListener('click', () => {
   avatarEditPopup.showLoading(false);
-  //popupAvatarValid.resetValidation();
+  popupAvatarValid.resetValidation();
   avatarEditPopup.open();
 });
 
@@ -55,6 +55,28 @@ const api = new Api({
   }
 });
 
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([data, cards]) => {
+      userId = data._id;
+      userInfo.setUserInfo(data);
+      initialCardsList.renderItems(cards);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+/*
+//загрузка информации (имя и проф) о пользователе с сервера
+api.getUserInfo()
+.then((data) => {
+userId = data._id;
+userInfo.setUserInfo(data);
+})
+.catch((err) => {
+  console.log(err);
+});
+
 //закрузка карточек с сервера
 api.getInitialCards()
 .then((data) => {
@@ -62,7 +84,7 @@ api.getInitialCards()
 })
 .catch((err) => {
   console.log(err);
-});
+});*/
 
 function createCard(data) {
   const card = new Card({
@@ -100,17 +122,6 @@ const initialCardsList = new Section({
     initialCardsList.addItemAppend(createCard(data));
   }
 }, cardContainer);
-
-
-//загрузка информации (имя и проф) о пользователе с сервера
-api.getUserInfo()
-.then((data) => {
-userId = data._id;
-userInfo.setUserInfo(data);
-})
-.catch((err) => {
-  console.log(err);
-});
 
 // Добавление карточки с введенными в инпут данными + отправка этих данных на сервер
 const popupAddCard = new PopupWithForm(popupAddPicture, (inputsValues) => {
@@ -151,7 +162,7 @@ const avatarEditPopup = new PopupWithForm(popupUpdateAvatar, (inputsValues) => {
     .then((data) => {
       userInfo.setUserAvatar(data);
       avatarEditPopup.close();
-      //popupAvatarValid.resetValidation();
+      popupAvatarValid.resetValidation();
     })
     .catch((err) => {
       console.log(err);
@@ -188,5 +199,3 @@ avatarEditPopup.setEventListeners();
 popupProfileFormValid.enableValidation();
 popupAddPictureFormValid.enableValidation();
 popupAvatarValid.enableValidation();
-
-

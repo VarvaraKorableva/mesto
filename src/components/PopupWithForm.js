@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
     this._buttonText = this._popupButton.textContent;
   }
 
-//отражает закрузку изменений на кнопке
   showLoading(isLoading) {
     if (isLoading) {
       this._popupButton.textContent = 'Сохранение...';
@@ -25,6 +24,8 @@ export default class PopupWithForm extends Popup {
     this._inputList.forEach((input) => {
       this._inputValues[input.name] = input.value;
     });
+
+    //console.log(this._inputValues);
     return this._inputValues;
   };
 

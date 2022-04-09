@@ -12,8 +12,8 @@ export {
   popupAddPicture,
   cardContainer,
   popupFullSizePicture,
-  inputName,
-  inputLink,
+  //inputName,
+  //inputLink,
   pictureName,
   popupProfile,
   popupImage,
@@ -21,6 +21,7 @@ export {
   updateAvatarButton,
   popapAreYouSureToDelete,
   popupUpdateAvatar,
+  popupUpdateAvatarForm
 };
 
 const meanForValidationConfig = {
@@ -38,13 +39,13 @@ const popupAddPictureForm = document.querySelector('#popupForm');
 const popupProfileForm = document.querySelector('.popup__form_profile-disabled');
 const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#job');
-const inputName = document.querySelector('#nameOfPicture');
-const inputLink = document.querySelector('#linkOfPicture');
+//const inputName = document.querySelector('#nameOfPicture');
+//const inputLink = document.querySelector('#linkOfPicture');
 const pictureName = document.querySelector('.popup__picture-name');
 const popupImage = document.querySelector('.popup__picture');
 const updateAvatarButton = document.querySelector('.profile__avatar-button');
 //const profileAvatar = document.querySelector('.profile__avatar');
-//const popupUpdateAvatar = document.querySelector('#update_avatar');
+const popupUpdateAvatarForm = document.querySelector('.popup__update-avatar');
 
 const cardContainer = ('.cards');
 const popup = ('.popup');
@@ -56,5 +57,3 @@ const profileNameSelector = ('#profile__name');
 const profileJobSelector = ('#profile__job');
 const popupProfile = ('#popup-profile');
 const profileAvatarSelector = ('.profile__avatar');
-
-

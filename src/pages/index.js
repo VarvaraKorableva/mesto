@@ -17,7 +17,8 @@ import {
   profileAvatarSelector,
   updateAvatarButton,
   popapAreYouSureToDelete,
-  popupUpdateAvatar
+  popupUpdateAvatar,
+  popupUpdateAvatarForm
 } from '../utils/constants.js';
 
 import Card from '../components/Card.js';
@@ -31,19 +32,26 @@ import Api from '../components/Api';
 
 let userId;
 
-const popupProfileFormValid = new FormValidator(meanForValidationConfig, popupProfileForm);
-const popupAddPictureFormValid = new FormValidator(meanForValidationConfig, popupAddPictureForm);
-//const popupAvatarValid = new FormValidator(meanForValidationConfig, popupUpdateAvatar);
 const popupWithImage = new PopupWithImage(popupFullSizePicture);
 const userInfo = new UserInfo({profileName: profileNameSelector, profileJob: profileJobSelector, profileAvatar: profileAvatarSelector});
 const areYouSureToDeletePopup = new PopupToDelete(popapAreYouSureToDelete);
 
+const popupProfileFormValid = new FormValidator(meanForValidationConfig, popupProfileForm);
+const popupAddPictureFormValid = new FormValidator(meanForValidationConfig, popupAddPictureForm);
+const popupAvatarValid = new FormValidator(meanForValidationConfig, popupUpdateAvatarForm);
+
+// Слушатель на кнопку открытия popup редактирования аватара
+updateAvatarButton.addEventListener('click', () => {
+  avatarEditPopup.showLoading(false);
+  //popupAvatarValid.resetValidation();
+  avatarEditPopup.open();
+});
 
 const api = new Api({
   url:'https://mesto.nomoreparties.co/v1/cohort-38',
   headers: {
     authorization: '482a243d-811c-428c-9d72-a4802c45fd09',
-    'Content-Type': 'aplication/json'
+    'Content-Type': 'application/json'
   }
 });
 
@@ -67,8 +75,8 @@ function createCard(data) {
         areYouSureToDeletePopup.showLoading(true);
         api.deleteCard(data._id)
         .then(() => {
-          card.deleteCard();
-          areYouSureToDeletePopup.close();
+        card.deleteCard();
+        areYouSureToDeletePopup.close();
         })
         .catch((err) => {
           console.log(err);
@@ -89,7 +97,7 @@ function createCard(data) {
 
 const initialCardsList = new Section({
   renderer: (data) => {
-    initialCardsList.addItem(createCard(data));
+    initialCardsList.addItemAppend(createCard(data));
   }
 }, cardContainer);
 
@@ -97,7 +105,7 @@ const initialCardsList = new Section({
 //загрузка информации (имя и проф) о пользователе с сервера
 api.getUserInfo()
 .then((data) => {
-//userId = userInfo._id;
+userId = data._id;
 userInfo.setUserInfo(data);
 })
 .catch((err) => {
@@ -105,9 +113,9 @@ userInfo.setUserInfo(data);
 });
 
 // Добавление карточки с введенными в инпут данными + отправка этих данных на сервер
-const popupAddCard = new PopupWithForm(popupAddPicture, (values) => {
+const popupAddCard = new PopupWithForm(popupAddPicture, (inputsValues) => {
   popupAddCard.showLoading(true);
-  api.addUserCard(values)
+  api.addUserCard(inputsValues)
     .then((data) => {
       initialCardsList.addItem(createCard(data));
       popupAddCard.close();
@@ -119,20 +127,6 @@ const popupAddCard = new PopupWithForm(popupAddPicture, (values) => {
     .finally(() => {
       popupAddCard.showLoading(false);
     })
-});
-
-addButton.addEventListener('click',() => {
-  popupAddPictureFormValid.resetValidation();
-  popupAddCard.open();
-});
-
-profileEditButton.addEventListener('click',() => {
-  const {name, about} = userInfo.getUserInfo();
-  popupEditProfile.showLoading(false);
-  popupProfileFormValid.resetValidation();
-  nameInput.value = name;
-  jobInput.value = about;
-  popupEditProfile.open();
 });
 
 // Создание экземпляра класса popup с обновлением новых данных о пользователе
@@ -149,13 +143,6 @@ const popupEditProfile = new PopupWithForm(popupProfile, (userData) => {
     .finally(() => {
       popupEditProfile.showLoading(false);
     })
-});
-
-// Слушатель на кнопку открытия popup редактирования аватара
-updateAvatarButton.addEventListener('click', () => {
-  avatarEditPopup.showLoading(false);
-  //popupAvatarValid.resetValidation();
-  avatarEditPopup.open();
 });
 
 const avatarEditPopup = new PopupWithForm(popupUpdateAvatar, (inputsValues) => {
@@ -175,13 +162,31 @@ const avatarEditPopup = new PopupWithForm(popupUpdateAvatar, (inputsValues) => {
 });
 
 
-//initialCardsList.renderItems();
+//Knopki
+addButton.addEventListener('click',() => {
+  popupAddPictureFormValid.resetValidation();
+  popupAddCard.open();
+});
+
+
+profileEditButton.addEventListener('click',() => {
+  const {name, about} = userInfo.getUserInfo();
+  popupEditProfile.showLoading(false);
+  popupProfileFormValid.resetValidation();
+  nameInput.value = name;
+  jobInput.value = about;
+  popupEditProfile.open();
+});
+
+
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();
-popupProfileFormValid.enableValidation();
-popupAddPictureFormValid.enableValidation();
-//popupAvatarValid.resetValidation();
 areYouSureToDeletePopup.setEventListeners();
 avatarEditPopup.setEventListeners();
+
+popupProfileFormValid.enableValidation();
+popupAddPictureFormValid.enableValidation();
+popupAvatarValid.enableValidation();
+
 

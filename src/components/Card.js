@@ -33,8 +33,8 @@ export default class Card {
     });
   }
 
-deteteCard() {
-    this._deleteButton.closest('.card').remove();
+deleteCard() {
+  this._element.closest('.card').remove();
 }
 
 // Метод постановки и удаления лайков
@@ -82,9 +82,13 @@ putLike() {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     this._element.querySelector('.card__counter').textContent = this._likes.length;
+
     if (!(this._ownerId === this._userId)) {
-      this._element.querySelector('.card__delete-button').style.display = 'none';
+     this._deleteButton.classList.add('card__trush-button');
+     //
+     //this._element.querySelector('.card__delete-button').style.display = 'none';
     }
+
     if (this._likes.find((obj) => this._userId === obj._id)) {
       this._likeButton.classList.add('card__like-button_active');
     }

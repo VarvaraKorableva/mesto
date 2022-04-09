@@ -11,10 +11,9 @@ export default class UserInfo {
       about: this._profileJob.textContent
     }
     return this._userData;
-
   };
 
-//принимает введенные данные и доб их на страницу
+//принимает введенные данные и доб их на страницу (формирует values)
   setUserInfo(userData) {
     this._profileName.textContent = userData.name;
     this._profileJob.textContent = userData.about;

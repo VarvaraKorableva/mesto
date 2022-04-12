@@ -5,7 +5,7 @@
 .header{border-bottom:1px solid rgba(54,54,54,.7);margin:45px auto 40px;padding-bottom:41px;width:100%}@media screen and (max-width:500px){.header{margin-bottom:38.25px;margin-top:28px;padding-bottom:31.6px}}
 .header__logo{cursor:pointer;height:33px;margin:0;transition:.5s ease;width:142px}.header__logo:hover{opacity:50%;transition:.5s ease}@media screen and (max-width:500px){.header__logo{height:24.4px;margin-left:27px;width:103.74px}}
 .profile{color:#fff;display:flex;justify-content:space-between;margin:auto auto 51px;max-width:880px;min-height:120px}@media screen and (max-width:600px){.profile{flex-direction:column;margin-bottom:36px}}@media screen and (max-width:500px){.profile{margin-left:19px;margin-right:19px}}
-.profile__avatar{border-radius:60px;cursor:pointer;height:120px;margin:0;transition:.5s ease;width:120px}@media screen and (max-width:500px){.profile__avatar{margin:auto auto 22.25px}}.profile__avatar:hover{opacity:.2;transition:.5s ease}
+.profile__avatar{border-radius:60px;cursor:pointer;height:120px;margin:0;-o-object-fit:cover;object-fit:cover;transition:.5s ease;width:120px}@media screen and (max-width:500px){.profile__avatar{margin:auto auto 22.25px}}.profile__avatar:hover{opacity:.2;transition:.5s ease}
 .profile__info{-moz-column-gap:18px;column-gap:18px;display:grid;grid-template-areas:"profile__name profile__name profile__name profile__edit-button" "profile__job profile__job profile__job profile__job";grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);margin-left:26.25px;row-gap:16px}@media screen and (max-width:500px){.profile__info{gap:14px;margin-left:0}}
 .profile__add-button{background-color:#010101;background-image:url(images/plus.d86bb2edc2f6eadb96b7.svg);background-position:50%;background-repeat:no-repeat;border:2px solid #fff;cursor:pointer;display:flex;height:50px;margin-bottom:35px;margin-left:26.25px;margin-top:35px;transition:.5s ease;width:150px}.profile__add-button:hover{opacity:60%;transition:.5s ease}@media screen and (max-width:600px){.profile__add-button{background-image:url(images/sPlus.54b1426515811a15ebaf.svg);margin:21px auto auto;width:278px}}
 .profile__contaner{display:flex;margin:0}@media screen and (max-width:500px){.profile__contaner{flex-direction:column;width:100%}}
@@ -24,6 +24,7 @@
 .card__img-container{min-height:282px;width:100%}
 .card__likes-container{margin-bottom:22px;margin-top:22px}
 .card__counter{font-size:13px;font-style:normal;font-weight:400;line-height:15.5px;margin-bottom:0;margin-top:0;text-align:center}
+.card__trush-button{display:none}
 .popup{align-items:center;bottom:0;box-sizing:border-box;display:flex;height:0;justify-content:center;left:0;margin:auto;opacity:0;position:fixed;right:0;top:0;transition:visibility 1s,opacity 1s;visibility:hidden}
 .popup__button{background-color:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-weight:400;height:50px;line-height:21.78px;margin-top:32px;padding:0;transition:.5s ease;width:358px}.popup__button:hover{opacity:80%;transition:.5s ease}@media screen and (max-width:600px){.popup__button{font-size:14px;height:46px;line-height:17px;margin-top:29px;width:238px}}
 .popup__title{font-size:24px;font-weight:900;line-height:29px;margin:0 0 45px}@media screen and (max-width:600px){.popup__title{font-size:18px;line-height:22px;margin-bottom:66px}}
@@ -41,6 +42,7 @@
 .popup__input_type_error{border-bottom-color:red}
 .popup__error_visible{color:red;display:inline;font-size:12px;font-weight:400;line-height:15px;margin-top:5px}
 .popup__error_hide{display:none}
+
 
 
 .footer{color:#545454;display:flex;font-size:18px;font-weight:400;line-height:21.78px;margin-bottom:60px;margin-top:67px}@media screen and (max-width:600px){.footer{font-size:14px;line-height:17px;margin-bottom:36px;margin-top:48px}}@media screen and (max-width:500px){.footer{margin-left:19px}}

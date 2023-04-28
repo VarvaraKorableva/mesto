@@ -10,7 +10,7 @@
 * Webpack
 * Babel
 
-# С проектом можно ознакомиться по ссылке:  https://varvara-from-moscow.github.io/mesto/
+# С проектом можно ознакомиться по ссылке:  https://varvarakorableva.github.io/mesto/
 
 
 
